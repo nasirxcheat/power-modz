@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>POWER X BAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      color: #00ff00;
+      background: black;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .matrix {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('matrix.gif') center center / cover no-repeat;
+      z-index: -1;
+    }
+
+    #welcomeModal {
+      width: 90vw;
+      max-width: 350px;
+      font-size: 1.1em;
+      padding: 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #000a00;
+      border: 2px solid #00ff00;
+      padding: 30px 40px;
+      box-shadow: 0 0 15px #00ff00;
+      text-align: center;
+      z-index: 9999;
+      width: 320px;
+      font-size: 1.2em;
+      color: #00ff00;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      user-select: none;
+    }
+
+    #welcomeModal button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+    #welcomeModal button:hover {
+      background-color: #00cc00;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      display: none;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    input, button {
+      width: 90%;
+      max-width: 300px;
+      font-size: 1em;
+      margin: 10px;
+      padding: 10px;
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #00cc00;
+    }
+
+    .getkey, .dev, .channel {
+      display: inline-block;
+      margin: 10px;
+      color: cyan;
+      text-decoration: none;
+    }
+
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <audio id="bg-audio" autoplay loop>
+    <source src="bg.mp3" type="audio/mp3" />
+  </audio>
+
+  <div class="matrix"></div>
+
+  <div id="welcomeModal">
+    <div style='font-size: 1.3em;'>WELCOME TO<br><span style='color: cyan;'>POWER X BAN</span><br><small style='font-size: 0.6em;'>Elite WhatsApp Ban Toolkit</small></div>
+    <br />
+    <button onclick="closeWelcome()">Start</button>
+  </div>
+
+  <div class="container" id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <br>
+    <button onclick="checkLogin()">Login</button>
+    <p class="error" id="error-msg"></p>
+    <a class="getkey" href="https://wa.me/923494274582?text=Get+Key+Price:+100Rs" target="_blank">Get Key</a>
+  </div>
+
+  <div class="container" id="toolkit" style="display:none;">
+    <h2>POWER X BAN TOOLKIT</h2>
+    <input type="text" id="victim" placeholder="Enter Number (e.g. +923xx...)" />
+    <button onclick="generateReport()">Send Ban Report</button>
+    <br>
+    <a class="dev" href="#" onclick="alert('Developer: PowerXNasir\nMaster of Modding & Tools\nKing of VIP Hack Kits!')">Developer</a>
+    <a class="channel" href="https://whatsapp.com/channel/0029Vb69IrN65yDCBDxOW63v" target="_blank">WhatsApp Channel</a>
+  </div>
+
+  <script>
+    function closeWelcome() {
+      document.getElementById('welcomeModal').style.display = 'none';
+      document.getElementById('login-section').style.display = 'block';
+    }
+
+    function checkLogin() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user === 'Power' && pass === 'modzz') {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('toolkit').style.display = 'block';
+      } else {
+        document.getElementById('error-msg').innerText = 'Invalid Credentials!';
+      }
+    }
+
+    function generateReport() {
+      const number = document.getElementById('victim').value.trim();
+      if (!number) {
+        alert("Enter a valid number first!");
+        return;
+      }
+      const reports = [
+        "This number is repeatedly sending unsolicited and abusive content...",
+        "The user of this number has been reported for involvement in fraudulent financial schemes...",
+        "This account is engaged in mass spamming through automated bots...",
+        "The number is impersonating a government agency...",
+        "Reported for organizing and promoting illegal group chats...",
+        "Violating WhatsApp terms by distributing bulk commercial messages...",
+        "Used to harass and blackmail users...",
+        "Abusing the WhatsApp platform to spread propaganda...",
+        "Continuously adding users to malicious groups...",
+        "Involved in the circulation of pirated software...",
+        "Involved in scamming users via fake promotions.",
+        "Spreading misinformation and dangerous content.",
+        "Operating illegal activities through WhatsApp.",
+        "Flooding chats with harmful media files.",
+        "Pretending to be a government authority.",
+        "Threatening users through messages.",
+        "Distributing pirated content illegally.",
+        "Sending automated spam bots 24/7.",
+        "Running fake giveaway frauds.",
+        "Harassing minors through private groups."
+      ];
+      const randomReport = reports[Math.floor(Math.random() * reports.length)];
+      const subject = encodeURIComponent("Urgent: Ban Request for Abusive User");
+      const body = encodeURIComponent("Dear WhatsApp Support,%0A%0APlease investigate and ban the following number:%0A" +
+        number + "%0A%0AReason:%0A" + randomReport + "%0A%0ARegards,%0AA Concerned User");
+      window.open("mailto:support@whatsapp.com?subject=" + subject + "&body=" + body, '_blank');
+    }
+  </script>
+</body>
+</html>
